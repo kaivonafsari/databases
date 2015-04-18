@@ -15,14 +15,14 @@ module.exports.app = app;
 app.set("port", 3000);
 
 // Logging and parsing
-app.use(morgan('dev'));
-app.use(parser.json());
+app.use(morgan('dev')); // logs things to stdout (the console)
+app.use(parser.json()); // (tries to?) parse the body of the request as JSON
 
 // Set up our routes
-app.use("/classes", router);
+app.use("/classes", router); // sends matching requests to routes.js
 
 // Serve the client files
-app.use(express.static(__dirname + "/../client"));
+app.use(express.static(__dirname + "/../client")); // serves ../client files on /
 
 // If we are being run directly, run the server.
 if (!module.parent) {
