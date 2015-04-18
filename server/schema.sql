@@ -12,6 +12,12 @@ CREATE TABLE `messages` (
   PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `users` (
+  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `username` VARCHAR(25) NULL DEFAULT '"anonymous"',
+  PRIMARY KEY (`id`)
+);
+
 -- ---
 -- Foreign Keys
 -- ---
