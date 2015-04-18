@@ -1,5 +1,8 @@
 var express = require('express');
 var db = require('./db');
+var cors = require('cors');
+var path = require('path');
+
 
 // Middleware
 var morgan = require('morgan');
@@ -22,7 +25,9 @@ app.use(parser.json()); // (tries to?) parse the body of the request as JSON
 app.use("/classes", router); // sends matching requests to routes.js
 
 // Serve the client files
-app.use(express.static(__dirname + "/../client")); // serves ../client files on /
+app.use(cors())
+console.log(__dirname);
+app.use(express.static(path.join(__dirname, "../client/client/"))); // serves ../client files on /
 
 // If we are being run directly, run the server.
 if (!module.parent) {

@@ -7,11 +7,12 @@ var db = require('../db');
 module.exports = {
   messages: {
     get: function (req, res) {
-      console.log("ENTERED message GET HANDLER " + JSON.stringify(req.body));
+      console.log("ENTERED message GET HANDLER ");
       models.messages.get(function(err, results){
         if (err) {
           res.status(500).send("we fucked up");
         } else {
+          console.log("Responding with data: " + JSON.stringify(results));
           res.status(200).send(JSON.stringify(results));
         }
       })
@@ -24,7 +25,7 @@ module.exports = {
           res.status(500).send("sorry");
         } else {
           console.log("RBM: " + JSON.stringify(req.body.message));
-          res.status(201).send([{text: JSON.stringify(req.body.message)}]);
+          res.status(201).send(JSON.stringify(req.body.message));
         }
       })
     } // a function which handles posting a message to the database
